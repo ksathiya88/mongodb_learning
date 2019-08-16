@@ -15,4 +15,12 @@ mongo
 
 Adter this command you will be connected to mongo Shell
 
+For killing the mongod server in windows
+1) Start the command prompt as Administrator
+2) run the command
+net stop MongoDB
 
+
+
+References for operators:
+https://docs.mongodb.com/manual/reference/operator/query-comparison/
