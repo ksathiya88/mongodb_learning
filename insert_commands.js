@@ -21,6 +21,13 @@ db.users.insertMany([{name:"Max",hobbies:[{title:"Sports",frequency:3},
 {title:"Cooking",frequency:6}],phone:2321313123,age:30}])
 
 
+db.movie.insertOne({name:"ABC",channels:["SUN","VIJAY","ZEE"],
+description:{hero:"DDD",heroin:"sdfsdf",
+about:{storyline:"dsfsdf",released:{}}}});
+
+
+
+
 
 // ordered
 db.hobbies.insertMany([{ _id: "yoga", name: "Yoga" },

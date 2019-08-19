@@ -1,4 +1,4 @@
-Shell DatatTyes:https://docs.mongodb.com/manual/core/shell-types/
+Shell DatatTyes: https://docs.mongodb.com/manual/core/shell-types/
 
 
 DataTypes:
