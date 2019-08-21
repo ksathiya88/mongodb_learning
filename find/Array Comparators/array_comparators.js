@@ -17,8 +17,7 @@ db.moviestarts.find({genre:{$all:["action","thriller"]}}).pretty();
 use users
 // it gives a issue as it will filter even other hobbies with frequency 
 // greater than 3
-db.users.find(
-    {$and:[{"hobbies.frequency":{$gt:3}},{"hobbies.title":"Sports"}]}).pretty()
+db.users.find({$and:[{"hobbies.frequency":{$gt:3}},{"hobbies.title":"Sports"}]}).pretty()
 
 
 db.users.find({hobbies:

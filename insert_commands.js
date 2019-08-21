@@ -28,7 +28,6 @@ about:{storyline:"dsfsdf",released:{}}}});
 
 
 
-
 // ordered
 db.hobbies.insertMany([{ _id: "yoga", name: "Yoga" },
 { _id: "cooking", name: "Cooking" },
@@ -43,8 +42,7 @@ db.persons.insertOne({ name: "Karthik", age: 22 },
 
 // for importing the data
 mongoimport tv-shows.json - d movieData - c movies --jsonArray --drop
-
-
+>mongoimport "C:\mongodb\mongodb_project\tv-shows.json" -d tv -c shows --jsonArray --drop
 
 
 
