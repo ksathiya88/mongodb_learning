@@ -49,5 +49,24 @@ db.users.updateMany({},{$rename:{age:"totalAge"}})
 db.users.updateOne({name:"Anna1"},{$set:{age:25,hobbies:{frequency:3.1}}},
 {upsert:true});
 
+// update exact Array Element
+// $ only the first element
+db.user_data.find({hobbies:{$elemMatch:{"title":"Sports","frequency":{$eq:3}}}})
+db.user_data.updateMany({hobbies:{$elemMatch:{"title":"Sports","frequency":{$eq:2}}}},{$set:{"hobbies.$.highFrequency":7}})
+
+
+// update all array element
+//$[] update many Arrays
+// error
+db.user_data.updateMany({hobbies:{$elemMatch:{"title":"Sports","frequency":{$eq:2}}}},{$set:{"hobbies.$.highFrequency":7}})
+db.user_data.updateMany({age:30},{$inc:{"hobbies.$[].frequency":1}})
+
+
+//Finding and updating Specific fields
+db.user_data.updateMany({name:"Manuel"},{$set:{"hobbies.$[el].frequency":100}},{arrayFilters:[{"el.frequency":{$eq:6}}]});
+db.users.updateMany({name:"Anna"},{$set:{"hobbies.$[el].frequency":500}},{arrayFilters:[{"el.frequency":{$eq:2}}]});
+
+
+
 
 
