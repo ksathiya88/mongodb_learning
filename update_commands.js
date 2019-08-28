@@ -67,6 +67,29 @@ db.user_data.updateMany({name:"Manuel"},{$set:{"hobbies.$[el].frequency":100}},{
 db.users.updateMany({name:"Anna"},{$set:{"hobbies.$[el].frequency":500}},{arrayFilters:[{"el.frequency":{$eq:2}}]});
 
 
+//add Array Elements
+db.users.update({"name":"Anna"},{$push:{hobbies:{"title":"Coding",frequency:3}}});
+
+// multiple Array Add
+db.users.update({"name":"Anna"},{$push:{hobbies:{$each:[{"title":"Coding",frequency:3},{"title":"Programming",frequency:4}]}}});
+
+// Added elements sorted
+db.users.update({"name":"Anna"},{$push:{hobbies:{$each:[{"title":"Coding",frequency:3},{"title":"Programming",frequency:4}],$sort:{frequency:-1}}}});
+
+// delete a Array Element
+db.users.updateOne({"name":"Anna"},{$pull:{hobbies:{"title":"Coding"}}});
+db.users.updateOne({"name":"Anna"},{$pull:{hobbies:{"title":{$eq:"Programming"}}}});
+
+
+// deleting the last Element
+db.users.updateOne({"name":"Anna"},{$pop:{hobbies:1}});
+
+// deleting the first Element
+db.users.updateOne({"name":"Max1"},{$pop:{hobbies:-1}});
+
+// addToSet which is unique
+db.users.update({"name":"Anna"},{$addToSet:{hobbies:{"title":"Coding",frequency:3}}});
+
 
 
 
