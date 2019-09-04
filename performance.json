@@ -1,0 +1,19 @@
+
+// Capped collection
+
+
+// collection by default 4 bytes
+db.createCollection("capped",{capped:true,size:10000,max:3});
+
+// capped collection the order is always maintained
+
+db.insertMany([{name:"hello1"},{name:"hello2"},{name:"hello3"},{name:"hello4"}]);
+
+// Replica sets
+
+// Sharding
+
+//Deploying mongodb server
+
+// mongodb Atlas
+managed mongodb solution

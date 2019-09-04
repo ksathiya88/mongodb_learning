@@ -1,0 +1,24 @@
+// creating collection
+
+
+use blog;
+db.users.insertOne({name:"ABC"});
+db.posts.insertOne({userId:  ObjectId("5d6f890494d1ad644031ef0d") , post :"post1"});
+
+db.posts.insertOne({userId:  ObjectId("5d6f890494d1ad644031ef0d") , post :"post2"});
+
+
+
+// STARTING tRANSACTION
+
+const session = db.getMongo().startSession()
+
+session.startTransaction()
+const usersCol = session.getDatabase("blog").users
+const postCol = session.getDatabase("blog").posts
+
+usersCol.deleteOne({_id:ObjectId("5d6f890494d1ad644031ef0d")}); 
+
+usersCol.deleteOne({ _id:ObjectId("5d6f890494d1ad644031ef0d")});
+postsCol.deleteMany({ userId:ObjectId("5d6f890494d1ad644031ef0d")});
+session.commitTransaction()
