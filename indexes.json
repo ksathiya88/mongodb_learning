@@ -1,0 +1,30 @@
+
+
+// to get how mongodb found the results
+// works for update and find not for insert
+db.persons.explain("executionStats").find();
+db.persons.explain("executionStats").find({gender:"male"})
+
+
+// create Index
+db.persons.createIndex({"gender":1});
+
+// drop Index
+db.persons.dropIndex({"gender":1})
+
+// index will not help in cases when your queries subset
+// not the entire document
+
+// compound indexes
+db.persons.createIndex({"dob.age":1,gender:1});
+
+// queries which will make use
+db.persons.explain("executionStats").find({"dob.age":35,gender:"male"})     
+db.persons.explain("executionStats").find({"dob.age":35})
+
+
+// queries which will not use as index is in right
+db.persons.explain("executionStats").find({"gender":"male"})
+
+
+
