@@ -43,4 +43,15 @@ db.friends.aggregate({$project:{_id:0,size:{$size:"$hobbies"}}}).pretty();
 // putting into a new collection
 db.friends.aggregate({$unwind:"$hobbies"}, {$group:{_id:{age:"$age"}, allHobbies:{$addToSet:"$hobbies"}}},{$out:"transformedFriends"});
 
+// combining two collections
+use Books;
+db.books.insertOne({name:"Harry Potter",price:"1000",author:"authorId1"});
+db.authors.insertOne({_id:"authorId1",name:"Ruskin Bond",place:"US",gender:"female"});
+
+db.books.aggregate([{$lookup:{from:"authors",localField:"author",
+foreignField:"_id",as:"creators"}}]).pretty();
+
+
+
+
 
